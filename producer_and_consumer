@@ -118,7 +118,6 @@ int main()
 
 	td.join();
 	td2.join();
-	cin.get();
 
     return 0;
 }
