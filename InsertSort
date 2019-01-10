@@ -44,8 +44,6 @@ int main()
 
 	print(arr, n);
 
-	cin.get();
-	cin.get();
     return 0;
 }
 
