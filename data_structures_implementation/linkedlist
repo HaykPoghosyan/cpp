@@ -1,0 +1,89 @@
+
+#include "stdafx.h"
+#include <iostream>
+
+class Node {
+
+public:
+	Node * next;
+	int data;
+};
+
+class LinkedList {
+	int coutListElement = 0;
+	Node * head;
+	Node * begin;
+
+public:
+
+	LinkedList() {
+		head = nullptr;
+	}
+	~LinkedList() {
+		std::cout << "list delete" << std::endl;
+	}
+
+	void Push(int data) {
+
+		Node * temp = new Node();
+		temp->data = data;
+		temp->next = head;
+		head = temp;
+		++coutListElement;
+	}
+
+	void Insert(int index, int data) {
+		if (index > coutListElement) {
+			std::cout << "not this index" << std::endl;
+		}
+		else if (index == 0) {
+			Push(data);
+		}
+		else {
+
+			Node * head = this->head;
+			Node * temp = nullptr;
+			Node * node = new Node();
+			node->data = data;
+			for (int i = 0; i < index-1 ; i++) {
+				head = head->next;
+			}
+			temp = head->next;
+			head->next = node;
+			node->next = temp;
+		}
+	}
+	void Delete(int index) {
+
+		Node * head = this->head;
+
+		for (int i = 0; i < index - 1; i++) {
+			head = head->next;
+		}
+
+	}
+	void Print() {
+		Node* temp = head;
+		while (temp != nullptr) {
+			std::cout << temp->data << "  ";
+			temp = temp->next;
+		}
+	}
+};
+
+int main()
+{
+	LinkedList * list = new LinkedList();
+
+	list->Push(1);
+	list->Push(2);
+	list->Push(3);
+	list->Push(4);
+
+	list->Insert(5, 15);
+
+	list->Print();
+
+	return 0;
+}
+
